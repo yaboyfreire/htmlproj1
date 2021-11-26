@@ -25,7 +25,32 @@ function register(){
     var pass1=document.getElementById("pass1").value; 
     if (pass ==pass1){
         localStorage.setItem("conta",user + "|" + pass);
+        window.location.replace("index.HTML")
     }else{
         alert("passwords do not match");
     }
 }
+function login(){
+    var conta = localStorage.getItem("conta").split("|");
+    var user = document.getElementById("user").value;
+    var pass =document.getElementById("pass").value;
+    if (user == conta[0] && pass==conta[1])
+    {
+        alert("login c/sucesso")
+        localStorage.setItem("logeduser",user)
+        window.location.replace("index.HTML")
+    }
+}
+function setname(){
+    alert("tex")
+    var nome = localStorage.getItem("logeduser");
+    if(nome != null){
+        document.getElementById("nome").innerText=nome;
+        
+    }else{
+        document.getElementById("nome").innerText="not logged in";
+    }
+}
+document.addEventListener("DOMContentLoaded", function() {
+    setname();
+  });
